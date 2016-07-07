@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'sonar-runner'
+
+group = 'ProductApp'
+version = '0.0.1-SNAPSHOT'
+
+
+description = """"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+        
+     maven { url "http://10.109.32.183:8081/nexus/content/groups/public" }
+	 //http://10.109.32.183:8081/nexus/content/groups/public
+	 
+	 //ivy{url ""}
+}
+
+dependencies {
+	testCompile 'junit:junit:4.12'
+    compile group: 'junit', name: 'junit', version:'4.1'
+    compile group: 'org.mockito', name: 'mockito-all', version:'1.9.5'
+    
+    
+    
+}
+
+sonarRunner {
+ sonarProperties {
+   property "sonar.projectName", "Day2-BankApp-Gradle"
+   property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
+ }
+
+}
+
+task wrapper(type: Wrapper){
+	gradleVersion = '2.6'
+}
+
+
+task hello{
+	println "Hello Gradle"
+}
+
+
+
+
+
+
+
+
+
+
+
